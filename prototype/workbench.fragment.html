@@ -1,0 +1,204 @@
+<style>
+#surface-studio-concept { --ss-bg:light-dark(#f4f6fa,#171b24);--ss-panel:light-dark(#ffffff,#1e2330);--ss-ink:light-dark(#202735,#e4e9f2);--ss-sub:light-dark(#647084,#9da9be);--ss-line:light-dark(#dfe5ee,#303847);--ss-active:light-dark(#e9efff,#293854);--ss-blue:light-dark(#315fd6,#86acff);font:13px/1.45 "Segoe UI",system-ui,sans-serif;color:var(--ss-ink);color-scheme:light dark; }
+#surface-studio-concept * { box-sizing:border-box; }
+#surface-studio-concept button,#surface-studio-concept select,#surface-studio-concept input { font:inherit; }
+#surface-studio-concept button,#surface-studio-concept select { color:var(--ss-ink);background:var(--ss-panel);border:1px solid var(--ss-line);border-radius:5px;padding:6px 9px; }
+#surface-studio-concept button:hover { background:var(--ss-active); }
+#surface-studio-concept button[aria-pressed="true"] { color:var(--ss-blue);background:var(--ss-active);border-color:var(--ss-blue); }
+#surface-studio-concept button:focus-visible,#surface-studio-concept select:focus-visible { outline:2px solid var(--ss-blue);outline-offset:2px; }
+#surface-studio-concept .ss-app { background:var(--ss-bg);border:1px solid var(--ss-line);border-radius:9px;overflow:hidden; }
+#surface-studio-concept .ss-chrome { display:flex;align-items:center;gap:15px;padding:12px 16px;background:var(--ss-panel);border-bottom:1px solid var(--ss-line);padding-right:100px;flex-wrap:wrap; }
+#surface-studio-concept .ss-brand { display:flex;align-items:center;gap:8px;font-weight:600;letter-spacing:-.3px;white-space:nowrap;font-size:15px; }
+#surface-studio-concept .ss-brand i { color:var(--ss-blue); }
+#surface-studio-concept .ss-caption { font-size:12px;color:var(--ss-sub); }
+#surface-studio-concept .ss-toolbar { display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:8px 12px;border-bottom:1px solid var(--ss-line); }
+#surface-studio-concept .ss-separator { width:1px;height:20px;background:var(--ss-line);margin:0 4px; }
+#surface-studio-concept .ss-workspace { display:grid;grid-template-columns:171px minmax(0,1fr) 199px; }
+#surface-studio-concept .ss-left,#surface-studio-concept .ss-right { background:var(--ss-panel);padding:14px 12px;min-width:0; }
+#surface-studio-concept .ss-left { border-right:1px solid var(--ss-line); }
+#surface-studio-concept .ss-right { border-left:1px solid var(--ss-line); }
+#surface-studio-concept .ss-section { font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--ss-sub);margin-bottom:10px; }
+#surface-studio-concept .ss-tree { display:flex;align-items:center;gap:7px;padding:7px 5px;border-radius:4px; }
+#surface-studio-concept .ss-tree[data-selected] { background:var(--ss-active);color:var(--ss-blue); }
+#surface-studio-concept .ss-tree small { margin-left:auto;color:var(--ss-sub); }
+#surface-studio-concept .ss-hr { border-top:1px solid var(--ss-line);margin:17px 0; }
+#surface-studio-concept .ss-profile { width:100%;height:205px;display:block;background:var(--ss-bg);border-radius:5px;touch-action:none; }
+#surface-studio-concept .ss-profile text { font:11px "Segoe UI",sans-serif;fill:var(--ss-sub); }
+#surface-studio-concept .ss-profile circle { cursor:grab; }
+#surface-studio-concept .ss-label { display:flex;justify-content:space-between;gap:8px;align-items:center;margin:12px 0 6px;color:var(--ss-sub);font-size:12px; }
+#surface-studio-concept .ss-label b { color:var(--ss-ink);font-weight:500;font-variant-numeric:tabular-nums; }
+#surface-studio-concept .ss-right select { width:100%; }
+#surface-studio-concept input[type="range"] { width:100%;accent-color:var(--ss-blue);margin:3px 0 8px; }
+#surface-studio-concept .ss-viewport { min-width:0;position:relative;background:#111722; }
+#surface-studio-concept .ss-view-head { position:absolute;z-index:1;top:14px;left:16px;color:#d2dbe9;pointer-events:none; }
+#surface-studio-concept .ss-view-head span { display:block;font-size:11px;color:#8c9bb0;margin-top:3px; }
+#surface-studio-concept canvas { width:100%;height:434px;display:block;touch-action:none;cursor:grab; }
+#surface-studio-concept .ss-view-footer { display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:8px 12px;border-top:1px solid #2b3546;color:#91a0b7;font-size:11px;background:#141c29; }
+#surface-studio-concept .ss-field-pair { display:flex;justify-content:space-between;gap:8px;color:var(--ss-sub);font-size:12px;margin-top:9px; }
+#surface-studio-concept .ss-field-pair b { font-weight:500;color:var(--ss-ink);font-variant-numeric:tabular-nums; }
+#surface-studio-concept .ss-tabs { display:flex;gap:5px;flex-wrap:wrap; }
+#surface-studio-concept .ss-tabs button { padding:5px 7px;font-size:12px; }
+#surface-studio-concept .ss-materials { display:flex;gap:6px;margin-top:8px; }
+#surface-studio-concept .ss-materials button { flex:1;min-width:0;font-size:11px;padding:7px 3px; }
+#surface-studio-concept .ss-status { display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:8px 12px;border-top:1px solid var(--ss-line);color:var(--ss-sub);font-size:11px; }
+#surface-studio-concept .ss-live { color:var(--ss-blue);font-variant-numeric:tabular-nums; }
+#surface-studio-concept .ss-check { display:flex;align-items:center;gap:7px;margin:10px 0;font-size:12px; }
+#surface-studio-concept .ss-check input { accent-color:var(--ss-blue); }
+#surface-studio-concept .ss-error { color:#f1a08c;padding:40px 20px;position:absolute;inset:70px 0 auto; }
+@media(max-width:760px) { #surface-studio-concept .ss-workspace { grid-template-columns:145px minmax(0,1fr); } #surface-studio-concept .ss-right { grid-column:1/-1;border-left:0;border-top:1px solid var(--ss-line);display:grid;grid-template-columns:1fr 1fr;gap:12px 22px; } #surface-studio-concept .ss-right .ss-hr { display:none; } }
+@media(max-width:480px) { #surface-studio-concept .ss-workspace { display:flex;flex-direction:column; } #surface-studio-concept .ss-viewport { order:0; } #surface-studio-concept .ss-left { order:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;border-right:0;border-top:1px solid var(--ss-line); } #surface-studio-concept .ss-left .ss-hr { display:none; } #surface-studio-concept .ss-right { order:2; } #surface-studio-concept canvas { height:340px; } #surface-studio-concept .ss-chrome { padding-right:90px;gap:4px; } #surface-studio-concept .ss-caption { flex-basis:100%; } }
+</style>
+<div id="surface-studio-concept">
+  <div class="ss-app" aria-label="Surface Studio 曲线建模与渲染产品方向预览">
+    <div class="ss-chrome"><div class="ss-brand"><i data-lucide="layers-3" aria-hidden="true"></i> Surface Studio</div><span class="ss-caption">工业外壳 / 参数化曲面 · 产品方向预览</span></div>
+    <div class="ss-toolbar">
+      <button type="button" data-work="model" aria-pressed="true">曲线建模</button><button type="button" data-work="render" aria-pressed="false">渲染审阅</button>
+      <span class="ss-separator" aria-hidden="true"></span>
+      <label for="ss-curve">曲线</label><select id="ss-curve"><option value="bspline">Cubic B-spline</option><option value="bezier">Cubic Bézier</option></select>
+      <button type="button" id="ss-home">标准视角</button>
+    </div>
+    <div class="ss-workspace">
+      <aside class="ss-left">
+        <div><div class="ss-section">Scene / 场景</div>
+          <div class="ss-tree"><i data-lucide="folder" aria-hidden="true"></i> Reducer Housing</div>
+          <div class="ss-tree" data-selected><i data-lucide="spline" aria-hidden="true"></i> 外形曲线 <small id="ss-cpcount">12 pts</small></div>
+          <div class="ss-tree"><i data-lucide="box" aria-hidden="true"></i> 旋转曲面</div>
+          <div class="ss-tree"><i data-lucide="sun" aria-hidden="true"></i> Studio lights</div>
+        </div>
+        <div><div class="ss-hr"></div><div class="ss-section">Profile / 轮廓编辑</div>
+          <svg class="ss-profile" viewBox="0 0 146 205" role="img" aria-label="可拖动控制点的轮廓编辑器"></svg>
+          <div class="ss-field-pair"><span>控制点</span><b id="ss-point-label">P5</b></div>
+          <div class="ss-field-pair"><span>三次曲线</span><b id="ss-algorithm">de Boor</b></div>
+        </div>
+      </aside>
+      <section class="ss-viewport" aria-label="交互式三维模型视图">
+        <div class="ss-view-head">变径接头 / Reducer housing<span id="ss-object-subtitle">B-spline profile → revolved surface</span></div>
+        <canvas id="ss-canvas" aria-label="拖动旋转、滚轮缩放的三维外壳模型">三维参数化外壳预览</canvas>
+        <div class="ss-view-footer"><span>拖动旋转 · 滚轮缩放</span><span id="ss-view-mode">Studio / 实时光照</span></div>
+        <div class="ss-error" id="ss-webgl-error" role="alert" hidden>当前环境未提供 WebGL 2；轮廓编辑仍可使用。</div>
+      </section>
+      <aside class="ss-right">
+        <div><div class="ss-section">Inspector / 参数</div>
+          <label class="ss-label" for="ss-selected">选中控制点</label><select id="ss-selected"></select>
+          <label class="ss-label" for="ss-radius">径向位置 <b id="ss-radius-value">0.48</b></label><input id="ss-radius" type="range" min="0.25" max="1.35" step="0.01" value="0.48">
+          <div class="ss-field-pair"><span>影响范围</span><b id="ss-support">局部 knot spans</b></div>
+          <label class="ss-check"><input id="ss-net" type="checkbox">显示控制轮廓</label>
+          <label class="ss-label" for="ss-resolution">曲面精度</label><select id="ss-resolution"><option value="48">交互 · 48 × 64</option><option value="96">精细 · 96 × 96</option></select>
+        </div>
+        <div><div class="ss-hr"></div><div class="ss-section">Rendering / 渲染</div>
+          <div class="ss-tabs" aria-label="渲染模式"><button type="button" data-mode="0" aria-pressed="true">光照</button><button type="button" data-mode="3" aria-pressed="false">线框</button><button type="button" data-mode="1" aria-pressed="false">法线</button><button type="button" data-mode="2" aria-pressed="false">深度</button></div>
+          <div class="ss-materials" aria-label="材质"><button type="button" data-mat="silver" aria-pressed="true">银色</button><button type="button" data-mat="copper" aria-pressed="false">铜</button><button type="button" data-mat="ceramic" aria-pressed="false">陶瓷</button></div>
+          <label class="ss-label" for="ss-roughness">粗糙度 <b id="ss-roughness-value">0.28</b></label><input id="ss-roughness" type="range" min="0.08" max="0.9" step="0.01" value="0.28">
+          <label class="ss-check"><input id="ss-depth-test" type="checkbox" checked>Depth test / Z-buffer</label>
+        </div>
+      </aside>
+    </div>
+    <div class="ss-status"><span>WebGL 交互概念 · 正式 C++ / OpenGL 实现待开发</span><span class="ss-live" id="ss-mesh-info" aria-live="polite">生成曲面…</span></div>
+  </div>
+</div>
+<script>
+(() => {
+  const root=document.getElementById('surface-studio-concept');
+  const el=id=>root.querySelector('#'+id), canvas=el('ss-canvas'), svg=root.querySelector('.ss-profile');
+  const gl=canvas.getContext('webgl2',{antialias:true,alpha:false});
+  const defaults=[1.10,1.10,1.05,1.02,0.72,0.72,0.70,0.65,0.53,0.48,0.48,0.48];
+  const heights=[-1.5,-1.47,-1.34,-1.25,-1.12,-0.78,-0.2,0.25,0.7,1.0,1.32,1.5];
+  const state={type:'bspline',selected:5,roughness:.28,material:'silver',mode:0,resolution:48,showNet:false,depth:true,yaw:.72,pitch:.30,distance:5.8,workspace:'model'};
+  const profiles={bspline:defaults.map((r,i)=>[r,heights[i]]),bezier:[[1.10,-1.5],[.85,-.55],[.32,.65],[.48,1.5]]};
+  const saved=window.openai&&window.openai.widgetState;
+  if(saved&&saved.privateContent&&saved.privateContent.type in profiles){Object.assign(state,saved.privateContent);}
+  function persist(){if(window.openai&&window.openai.setWidgetState)window.openai.setWidgetState({modelContent:{direction:'Surface Studio',curve:state.type,renderMode:state.mode},privateContent:{type:state.type,material:state.material,mode:state.mode,roughness:state.roughness}}).catch(()=>{});}
+  function knots(n){const k=[0,0,0,0];for(let i=1;i<n-3;i++)k.push(i/(n-3));k.push(1,1,1,1);return k;}
+  function casteljau(points,t){if(points.length===1)return points[0];const next=[];for(let i=0;i<points.length-1;i++)next.push([points[i][0]*(1-t)+points[i+1][0]*t,points[i][1]*(1-t)+points[i+1][1]*t]);return casteljau(next,t);}
+  function deBoor(points,t){
+    if(t>=1)return points[points.length-1].slice();const p=3,k=knots(points.length);let span=p;
+    while(span<points.length-1&&t>=k[span+1])span++;
+    const d=Array.from({length:p+1},(_,j)=>points[span-p+j].slice());
+    for(let r=1;r<=p;r++)for(let j=p;j>=r;j--){const i=span-p+j,den=k[i+p-r+1]-k[i],a=den===0?0:(t-k[i])/den;d[j]=[(1-a)*d[j-1][0]+a*d[j][0],(1-a)*d[j-1][1]+a*d[j][1]];}
+    return d[p];
+  }
+  const evaluate=t=>state.type==='bezier'?casteljau(profiles.bezier,t):deBoor(profiles.bspline,t);
+  function renderProfile(){
+    const points=profiles[state.type];state.selected=Math.min(state.selected,points.length-1);
+    const x=r=>14+r/1.4*116,y=h=>188-(h+1.5)/3*166;
+    let markup='<path d="M14 16 V188 H134" fill="none" stroke="var(--ss-line)"/><text x="16" y="13">Y</text><text x="133" y="201">R</text>';
+    markup+='<polyline points="'+points.map(p=>x(p[0])+','+y(p[1])).join(' ')+'" fill="none" stroke="var(--ss-sub)" stroke-width="1" stroke-dasharray="3 4"/>';
+    const k=knots(points.length),lo=state.type==='bezier'?0:k[state.selected],hi=state.type==='bezier'?1:k[state.selected+4];
+    let path='',active='';for(let i=0;i<=120;i++){const t=i/120,p=evaluate(t),s=x(p[0]).toFixed(2)+' '+y(p[1]).toFixed(2);path+=(i?' L':'M')+s;if(t>=lo&&t<=hi)active+=(active?' L':'M')+s;}
+    markup+='<path d="'+path+'" fill="none" stroke="var(--ss-sub)" stroke-width="1.5"/><path d="'+active+'" fill="none" stroke="var(--ss-blue)" stroke-width="2.5"/>';
+    points.forEach((p,i)=>{markup+='<circle data-point="'+i+'" cx="'+x(p[0])+'" cy="'+y(p[1])+'" r="'+(i===state.selected?5:3.2)+'" fill="'+(i===state.selected?'var(--ss-blue)':'var(--ss-panel)')+'" stroke="var(--ss-blue)" stroke-width="1.2"/>';});
+    svg.innerHTML=markup;
+    el('ss-selected').innerHTML=points.map((p,i)=>'<option value="'+i+'"'+(i===state.selected?' selected':'')+'>P'+i+'</option>').join('');
+    el('ss-radius').value=points[state.selected][0];el('ss-radius-value').textContent=points[state.selected][0].toFixed(2);el('ss-point-label').textContent='P'+state.selected;
+    el('ss-cpcount').textContent=points.length+' pts';el('ss-algorithm').textContent=state.type==='bezier'?'de Casteljau':'de Boor';
+    el('ss-support').textContent=state.type==='bezier'?'整个参数区间':'u ∈ ['+lo.toFixed(2)+', '+hi.toFixed(2)+']';
+    el('ss-object-subtitle').textContent=(state.type==='bezier'?'Bézier':'B-spline')+' profile → revolved surface';
+  }
+  const norm=v=>{const l=Math.hypot(...v);return v.map(x=>x/(l||1));},cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0);
+  function multiply(a,b){const o=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++)for(let i=0;i<4;i++)o[c*4+r]+=a[i*4+r]*b[c*4+i];return o;}
+  function projection(aspect){const f=1/Math.tan(.55/2),n=.2,z=30;return new Float32Array([f/aspect,0,0,0,0,f,0,0,0,0,(z+n)/(n-z),-1,0,0,2*z*n/(n-z),0]);}
+  function camera(eye){const z=norm(eye),x=norm(cross([0,1,0],z)),y=cross(z,x);return new Float32Array([x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,eye),-dot(y,eye),-dot(z,eye),1]);}
+  let program,vao,vbo,ebo,lineBuffer,floorVao,floorBuffer,netVao,netBuffer,uniforms={},mesh={vertices:[],indices:[],lines:[]};
+  function makeMesh(){
+    const us=state.resolution,vs=us===96?96:64,vertices=[],indices=[],lineIndices=[];
+    const add=(p,n)=>{vertices.push(...p,...n);return vertices.length/6-1;};
+    for(let layer=0;layer<2;layer++)for(let u=0;u<=us;u++){
+      const t=u/us,[r,y]=evaluate(t),a=evaluate(Math.max(0,t-1e-4)),b=evaluate(Math.min(1,t+1e-4)),dr=b[0]-a[0],dy=b[1]-a[1];
+      for(let v=0;v<=vs;v++){const theta=2*Math.PI*v/vs,c=Math.cos(theta),s=Math.sin(theta),radius=r-layer*.10,sign=layer?-1:1,n=norm([dy*c,-dr,dy*s]).map(x=>x*sign);add([radius*c,y,radius*s],n);}
+    }
+    const layerSize=(us+1)*(vs+1);
+    for(let layer=0;layer<2;layer++)for(let u=0;u<us;u++)for(let v=0;v<vs;v++){
+      const a=layer*layerSize+u*(vs+1)+v,b=a+1,c=a+vs+1,d=c+1;
+      if(layer)indices.push(a,c,b,b,c,d);else indices.push(a,b,c,b,d,c);
+      lineIndices.push(a,b,a,c);
+    }
+    for(const end of [0,1]){const [r,y]=evaluate(end);for(let v=0;v<vs;v++){const a=2*Math.PI*v/vs,b=2*Math.PI*(v+1)/vs,n=[0,end?1:-1,0];const i=add([r*Math.cos(a),y,r*Math.sin(a)],n),j=add([r*Math.cos(b),y,r*Math.sin(b)],n),k=add([(r-.1)*Math.cos(a),y,(r-.1)*Math.sin(a)],n),l=add([(r-.1)*Math.cos(b),y,(r-.1)*Math.sin(b)],n);if(end)indices.push(i,k,j,j,k,l);else indices.push(i,j,k,j,l,k);}}
+    mesh={vertices,indices,lines:lineIndices};el('ss-mesh-info').textContent=(vertices.length/6).toLocaleString()+' vertices · '+(indices.length/3).toLocaleString()+' triangles';
+    if(gl){gl.bindVertexArray(vao);gl.bindBuffer(gl.ARRAY_BUFFER,vbo);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(vertices),gl.DYNAMIC_DRAW);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ebo);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint32Array(indices),gl.DYNAMIC_DRAW);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,lineBuffer);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint32Array(lineIndices),gl.DYNAMIC_DRAW);
+      const net=[];profiles[state.type].forEach(p=>net.push(p[0],p[1],0,0,0,1));gl.bindVertexArray(netVao);gl.bindBuffer(gl.ARRAY_BUFFER,netBuffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(net),gl.DYNAMIC_DRAW);
+    }
+  }
+  function initGL(){
+    if(!gl){el('ss-webgl-error').hidden=false;return;}
+    const vertex='#version 300 es\nprecision highp float;layout(location=0)in vec3 position;layout(location=1)in vec3 normal;uniform mat4 vp;out vec3 n;out vec3 world;void main(){world=position;n=normal;gl_Position=vp*vec4(position,1.0);gl_PointSize=7.0;}';
+    const fragment='#version 300 es\nprecision highp float;in vec3 n;in vec3 world;out vec4 colour;uniform vec3 eye;uniform vec3 base;uniform float roughness;uniform int mode;uniform int ground;void main(){vec3 N=normalize(n),V=normalize(eye-world);if(dot(N,V)<0.0)N=-N;vec3 L=normalize(vec3(0.6,0.95,0.5)),H=normalize(L+V);float diffuse=max(dot(N,L),0.0);float spec=pow(max(dot(N,H),0.0),mix(200.0,9.0,roughness));float rim=pow(1.0-max(dot(N,V),0.0),3.0);vec3 c=base*(0.19+0.67*diffuse)+vec3(0.92,0.96,1.0)*spec*(0.9-0.5*roughness)+vec3(0.35,0.48,0.68)*rim*0.45;if(ground==1){float shadow=exp(-dot(world.xz,world.xz)/1.2);c=base*(0.85-0.4*shadow);}if(mode==1)c=N*0.5+0.5;if(mode==2){float z=gl_FragCoord.z*2.0-1.0;float depth=2.0*0.2*30.0/(30.0+0.2-z*(30.0-0.2));c=vec3(clamp(1.0-(depth-3.0)/8.0,0.0,1.0));}if(mode==4)c=base;colour=vec4(pow(max(c,vec3(0.0)),vec3(1.0/2.2)),1.0);}';
+    function compile(type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
+    const vs=compile(gl.VERTEX_SHADER,vertex),fs=compile(gl.FRAGMENT_SHADER,fragment);program=gl.createProgram();gl.attachShader(program,vs);gl.attachShader(program,fs);gl.linkProgram(program);gl.deleteShader(vs);gl.deleteShader(fs);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));
+    for(const name of ['vp','eye','base','roughness','mode','ground'])uniforms[name]=gl.getUniformLocation(program,name);
+    function setup(){const v=gl.createVertexArray(),b=gl.createBuffer();gl.bindVertexArray(v);gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,3,gl.FLOAT,false,24,0);gl.enableVertexAttribArray(1);gl.vertexAttribPointer(1,3,gl.FLOAT,false,24,12);return [v,b];}
+    [vao,vbo]=setup();ebo=gl.createBuffer();lineBuffer=gl.createBuffer();[netVao,netBuffer]=setup();[floorVao,floorBuffer]=setup();
+    const floor=[-60,-1.55,-60,0,1,0,60,-1.55,-60,0,1,0,-60,-1.55,60,0,1,0,60,-1.55,-60,0,1,0,60,-1.55,60,0,1,0,-60,-1.55,60,0,1,0];gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(floor),gl.STATIC_DRAW);
+  }
+  function draw(){
+    if(!gl||!program)return;const dpr=Math.min(window.devicePixelRatio||1,2),w=Math.round(canvas.clientWidth*dpr),h=Math.round(canvas.clientHeight*dpr);if(w===0||h===0)return;if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
+    gl.viewport(0,0,w,h);gl.clearColor(.018,.028,.048,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);if(state.depth)gl.enable(gl.DEPTH_TEST);else gl.disable(gl.DEPTH_TEST);gl.disable(gl.CULL_FACE);gl.useProgram(program);
+    const eye=[Math.sin(state.yaw)*Math.cos(state.pitch)*state.distance,Math.sin(state.pitch)*state.distance,Math.cos(state.yaw)*Math.cos(state.pitch)*state.distance];gl.uniformMatrix4fv(uniforms.vp,false,multiply(projection(w/h),camera(eye)));gl.uniform3fv(uniforms.eye,eye);gl.uniform1f(uniforms.roughness,state.roughness);gl.uniform1i(uniforms.mode,state.mode===3?4:state.mode);
+    gl.uniform1i(uniforms.ground,1);gl.uniform3fv(uniforms.base,[.006,.009,.016]);gl.bindVertexArray(floorVao);gl.drawArrays(gl.TRIANGLES,0,6);
+    const colours={silver:[.38,.47,.6],copper:[.62,.27,.12],ceramic:[.68,.7,.73]};gl.uniform1i(uniforms.ground,0);gl.uniform3fv(uniforms.base,state.mode===3?[.24,.46,.72]:colours[state.material]);gl.bindVertexArray(vao);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,state.mode===3?lineBuffer:ebo);gl.drawElements(state.mode===3?gl.LINES:gl.TRIANGLES,state.mode===3?mesh.lines.length:mesh.indices.length,gl.UNSIGNED_INT,0);
+    if(state.showNet){gl.disable(gl.DEPTH_TEST);gl.uniform1i(uniforms.mode,4);gl.uniform3fv(uniforms.base,[.17,.44,.9]);gl.bindVertexArray(netVao);gl.drawArrays(gl.LINE_STRIP,0,profiles[state.type].length);gl.drawArrays(gl.POINTS,0,profiles[state.type].length);}
+  }
+  function update(rebuild=true){
+    el('ss-curve').value=state.type;el('ss-roughness').value=state.roughness;el('ss-roughness-value').textContent=Number(state.roughness).toFixed(2);
+    el('ss-net').checked=state.showNet;el('ss-depth-test').checked=state.depth;el('ss-resolution').value=state.resolution;
+    root.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',Number(b.dataset.mode)===state.mode));root.querySelectorAll('[data-mat]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.mat===state.material));root.querySelectorAll('[data-work]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.work===state.workspace));
+    const labels={0:'Studio / 实时光照',1:'Normals / 法线方向',2:'Linear depth / 深度',3:'Wireframe / 三角网格'};el('ss-view-mode').textContent=labels[state.mode];renderProfile();if(rebuild)makeMesh();draw();
+  }
+  el('ss-curve').onchange=e=>{state.type=e.target.value;state.selected=state.type==='bezier'?1:5;update();persist();};
+  el('ss-selected').onchange=e=>{state.selected=Number(e.target.value);update(false);};
+  el('ss-radius').oninput=e=>{profiles[state.type][state.selected][0]=Number(e.target.value);update();};
+  el('ss-resolution').onchange=e=>{state.resolution=Number(e.target.value);update();};
+  el('ss-roughness').oninput=e=>{state.roughness=Number(e.target.value);update(false);persist();};
+  el('ss-net').onchange=e=>{state.showNet=e.target.checked;update(false);};el('ss-depth-test').onchange=e=>{state.depth=e.target.checked;update(false);};
+  root.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{state.mode=Number(b.dataset.mode);update(false);persist();});root.querySelectorAll('[data-mat]').forEach(b=>b.onclick=()=>{state.material=b.dataset.mat;update(false);persist();});
+  root.querySelectorAll('[data-work]').forEach(b=>b.onclick=()=>{state.workspace=b.dataset.work;state.showNet=b.dataset.work==='model';update(false);});
+  el('ss-home').onclick=()=>{state.yaw=.72;state.pitch=.3;state.distance=5.8;draw();};
+  let orbit=null,pointDrag=false;
+  canvas.onpointerdown=e=>{orbit=[e.clientX,e.clientY];canvas.setPointerCapture(e.pointerId);};canvas.onpointermove=e=>{if(!orbit)return;state.yaw+=(e.clientX-orbit[0])*.009;state.pitch=Math.max(-.7,Math.min(1.2,state.pitch+(e.clientY-orbit[1])*.009));orbit=[e.clientX,e.clientY];draw();};canvas.onpointerup=()=>orbit=null;canvas.onpointercancel=()=>orbit=null;
+  canvas.addEventListener('wheel',e=>{e.preventDefault();state.distance=Math.max(3.8,Math.min(9,state.distance*Math.exp(e.deltaY*.001)));draw();},{passive:false});
+  svg.onpointerdown=e=>{const target=e.target.closest('[data-point]');if(!target)return;state.selected=Number(target.dataset.point);pointDrag=true;svg.setPointerCapture(e.pointerId);update(false);};svg.onpointermove=e=>{if(!pointDrag)return;const rect=svg.getBoundingClientRect(),x=(e.clientX-rect.left)*146/rect.width;profiles[state.type][state.selected][0]=Math.max(.25,Math.min(1.35,(x-14)/116*1.4));update();};svg.onpointerup=()=>pointDrag=false;svg.onpointercancel=()=>pointDrag=false;
+  try{initGL();update();}catch(error){el('ss-webgl-error').hidden=false;el('ss-webgl-error').textContent='三维预览无法初始化：'+error.message;renderProfile();}
+  new ResizeObserver(()=>draw()).observe(canvas);
+  window.addEventListener('openai:set_globals',event=>{const next=event.detail&&event.detail.globals&&event.detail.globals.widgetState;if(next&&next.privateContent&&next.privateContent.type in profiles){Object.assign(state,next.privateContent);update();}});
+  if(globalThis.Tweak){const tweak=new Tweak({container:root,onChange:()=>update(false)});tweak.addSelect(state,'material',{label:'默认材质',options:[{label:'银色工业件',value:'silver'},{label:'铜材质',value:'copper'},{label:'陶瓷外壳',value:'ceramic'}]});tweak.addSlider(state,'roughness',{label:'默认粗糙度',min:.08,max:.9,step:.01});tweak.addToggle(state,'showNet',{label:'显示控制轮廓'});}
+})();
+</script>
